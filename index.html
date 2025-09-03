@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Cloudflare Store</title>
+</head>
+<body>
+  <h1>Welcome to My Store 🚀</h1>
+  <div id="products"></div>
+  <script>
+    async function loadProducts() {
+      const res = await fetch("/api/products");
+      const products = await res.json();
+      document.getElementById("products").innerHTML = products
+        .map(p => `<div><h3>${p.name}</h3><p>${p.price}₹</p></div>`)
+        .join("");
+    }
+    loadProducts();
+  </script>
+</body>
+</html>
